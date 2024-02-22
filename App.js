@@ -9,6 +9,13 @@ export default function App() {
   const saveUser = (data) => {
     setUsers([data, ...users]);
   };
+  const deleteUser = (id) => {
+    setUsers(
+      users.filter((user) => {
+        return user.id != id;
+      })
+    );
+  };
   console.log(users);
   return (
     <View style={styles.container}>
@@ -17,7 +24,14 @@ export default function App() {
         <FlatList
           data={users}
           renderItem={(user) => {
-            return <UserItem name={user.item} />;
+            // console.log(user.item);
+            return (
+              <UserItem
+                deleteUser={deleteUser}
+                name={user.item.name}
+                id={user.item.id}
+              />
+            );
           }}
         />
       </View>

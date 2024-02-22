@@ -1,12 +1,17 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 
-const UserItem = ({ name }) => {
+const UserItem = ({ name, id, deleteUser }) => {
+  const removeItem = () => {
+    deleteUser(id);
+  };
   return (
     <View style={styles.item}>
       <Text style={styles.userTxt}>{name}</Text>
-      <Ionicons name="person-remove" size={24} color="black" />
+      <TouchableOpacity onPress={removeItem}>
+        <Ionicons name="person-remove" size={24} color="black" />
+      </TouchableOpacity>
     </View>
   );
 };

@@ -5,7 +5,7 @@ const UserInput = ({ saveUser }) => {
   const [impData, setImpData] = useState("");
   const addUser = () => {
     if (impData != "") {
-      saveUser(impData);
+      saveUser({ id: Math.random(), name: impData, des: "abc" });
       setImpData("");
     }
   };
