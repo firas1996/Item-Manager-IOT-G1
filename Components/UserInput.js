@@ -4,8 +4,10 @@ import React, { useState } from "react";
 const UserInput = ({ saveUser }) => {
   const [impData, setImpData] = useState("");
   const addUser = () => {
-    saveUser(impData);
-    setImpData("");
+    if (impData != "") {
+      saveUser(impData);
+      setImpData("");
+    }
   };
   return (
     <View style={styles.viewInput}>
@@ -24,6 +26,7 @@ const styles = StyleSheet.create({
     width: "96%",
     flex: 1,
     flexDirection: "row",
+    alignItems: "center",
   },
   imp: {
     borderWidth: 2,

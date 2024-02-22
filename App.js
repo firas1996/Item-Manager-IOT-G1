@@ -1,7 +1,8 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import UserInput from "./Components/UserInput";
 import { useState } from "react";
+import UserItem from "./Components/UserItem";
 
 export default function App() {
   const [users, setUsers] = useState([]);
@@ -13,9 +14,12 @@ export default function App() {
     <View style={styles.container}>
       <UserInput saveUser={saveUser} />
       <View style={styles.items}>
-        {users.map((user) => {
-          return <Text>{user}</Text>;
-        })}
+        <FlatList
+          data={users}
+          renderItem={(user) => {
+            return <UserItem name={user.item} />;
+          }}
+        />
       </View>
       <StatusBar style="auto" />
     </View>
@@ -28,7 +32,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: 52,
+    // paddingTop: 52,
     paddingBottom: 20,
   },
   items: {
