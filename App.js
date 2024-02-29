@@ -5,6 +5,8 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import Home from "./Components/Screens/Home";
 import FavUsers from "./Components/Screens/FavUsers";
 import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+const BTabs = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const Nav = createDrawerNavigator();
 export default function App() {

@@ -25,8 +25,16 @@ const Home = () => {
     );
   };
   console.log(users);
+  const favU = users.filter((item) => {
+    return item.isFav == true;
+  });
+  console.log("Favs", favU);
   const navToFav = () => {
-    navigation.navigate("Fav");
+    navigation.navigate("Fav", {
+      favs: favU,
+      favHandler: favHandler,
+      deleteUser: deleteUser,
+    });
   };
   return (
     <View style={styles.container}>
